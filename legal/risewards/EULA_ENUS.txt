@@ -1,0 +1,79 @@
+End-User License Agreement (EULA)
+
+Last Updated: September 6, 2026
+
+This End-User License Agreement (the "AGREEMENT") is a legal agreement between the END USER and THE COMPANY. By installing, copying, or otherwise using THE PRODUCT, you agree to be bound by the terms of this Agreement. If you do not agree to the terms of this Agreement, just don't install or use THE PRODUCT.
+
+1. License Grant & Restrictions
+
+Once obtained, the END USER’s right to use THE PRODUCT is non-exclusive, non-transferable, permanent, and cannot be revoked by THE COMPANY, except where required by law or in cases involving infringement of intellectual property rights. This license remains valid unless terminated under Section 7.
+
+The END USER shall not copy, redistribute, resell, or reverse-engineer THE PRODUCT except as expressly permitted under Section 3.
+
+To comply with UNITY licensing terms, following restrictions also apply:
+
+  - THE PRODUCT may not be used for unlawful purposes or in ways that infringe third-party rights.
+  - THE PRODUCT may not be used to develop, compile, or distribute other software.
+  - No rights are granted to modify, extract, or redistribute UNITY engine or runtime components embedded in THE PRODUCT.
+
+2. Third-Party Components Notice
+
+THE PRODUCT includes third-party software components licensed to THE COMPANY. Such components are provided solely as part of THE PRODUCT and may not be separated, modified, or redistributed independently.
+
+No rights are granted to the END USER over any third-party software embedded in THE PRODUCT, including (but not limited to) the UNITY engine or runtime components.
+
+3. User-Content / Modding
+
+Modifications of THE PRODUCT are permitted only to the extent that such modifications do not alter, reverse engineer, or redistribute any portion of the UNITY engine or runtime components included with THE PRODUCT, and do not violate the intellectual property rights of THE PRODUCT itself.
+
+Permitted modifications may only affect THE PRODUCT’s original content (such as assets, static data files, or gameplay logic) and must not circumvent or bypass the intended progression in THE PRODUCT:
+
+  - Unlocking or granting access to content and/or achievements in a manner other than intended by THE PRODUCT.
+  - Redistributing modified SAVE DATA or tools that create or modify them, as doing so constitutes a bypass of the intended progression described above.
+
+Redistribution (paid or free) of modifications that comply with this terms is permitted, provided that such modifications do not include or redistribute any copyrighted part (modified or unmodified) of THE PRODUCT or any third-party components included with THE PRODUCT, and do not violate any applicable law or intellectual property right. Modifications must consist solely of content THE MODDER has full rights to redistribute (and/or sell, if applicable).
+
+4. Ownership & IP Clarification
+
+All rights to THE PRODUCT’s original content belong to THE COMPANY. All rights to embedded third-party components belong to their respective owners.
+
+5. Disclaimer of Warranties
+
+THE PRODUCT is provided "as is" and "as available," with all faults, and without warranty of any kind.
+THE COMPANY is not responsible for the availability, performance, or operation of third-party services used by THE PRODUCT.
+
+If the END USER’s ability to access THE PRODUCT through a third-party platform is obstructed, the END USER may be required to demonstrate lawful ownership of a valid license to THE PRODUCT before THE COMPANY can consider any request related to access or use. THE COMPANY does not guarantee re-delivery, replacement copies, or continued availability of THE PRODUCT through any specific platform or service.
+
+Access to third-party services integrated with THE PRODUCT (including platform APIs, cloud services, authentication systems, or online features) is controlled by the owners of such services and may be modified, restricted, or revoked at any time. THE COMPANY is not responsible for any loss of functionality, features, or usability of THE PRODUCT resulting from changes, limitations, or revocation of access to third-party services.
+
+6. Privacy & Data Collection
+
+THE PRODUCT does not intentionally collect personal data other than required for savegame, progress, stats files, or essential technical data required to diagnose or resolve malfunctions. In no case does THE PRODUCT collect any data that can be used to identify an specific individual, such as usernames or locations
+
+Third-party services platform-level data collection is governed by their respective privacy policies.
+
+7. Termination
+
+This AGREEMENT remains in effect until terminated.
+
+THE COMPANY may terminate this AGREEMENT when required by law or in cases involving infringement of intellectual property rights.
+
+Termination of this AGREEMENT does not revoke the END USER’s license granting the right to use THE PRODUCT.
+
+Upon termination, THE COMPANY may, at its discretion, deny the END USER access to any online features, accounts, services, or purchases related to current or future products of THE COMPANY. Such denial does not affect the END USER’s permanent license to locally use THE PRODUCT.
+
+8. Definitions
+
+"AGREEMENT" means this the End User License Agreement
+
+"END USER" means whoever will make use of this copy of THE PRODUCT.
+
+"THE PRODUCT" means the videogame product accompanying this agreement, the computer software and any included associated media, printed materials, documentation, and virtual items.
+
+"THE COMPANY" means Mindside Games Studio.
+
+“UNITY” means Unity Software Inc., a Delaware corporation, together with its subsidiaries and other entities that are directly or indirectly controlled by or are under common control with UNITY.
+
+"THE MODDER" means any individual or group who creates, modifies, or distributes anything that can be used as a modification of The Product, including those who produce assets, tools, or files used in the modification, and those who distribute such modifications in whole or in part.
+
+"SAVE DATA" means any data that THE PRODUCT can generate and represents END USER’s progression, unlocked content, achievements and gameplay statistics.

@@ -1,0 +1,80 @@
+Contrato de Licencia de Usuario Final (CLUF)
+
+Última actualización: 6 de septiembre de 2026
+
+Este Contrato de Licencia de Usuario Final (el "ACUERDO") es un contrato legal entre el USUARIO FINAL y LA EMPRESA. Al instalar, copiar o utilizar EL PRODUCTO de cualquier otra forma, usted acepta quedar sujeto a los términos de este Acuerdo. Si no está de acuerdo con los términos de este Acuerdo, simplemente no instale ni utilice EL PRODUCTO.
+
+1. Otorgamiento de Licencia y Restricciones
+
+Una vez obtenido, el derecho del USUARIO FINAL a utilizar EL PRODUCTO es no exclusivo, intransferible, permanente y no puede ser revocado por LA EMPRESA, salvo que lo exija la ley o en casos de infracción de derechos de propiedad intelectual. Esta licencia permanece vigente a menos que se rescinda conforme a la Sección 7.
+
+El USUARIO FINAL no podrá copiar, redistribuir, revender ni realizar ingeniería inversa del PRODUCTO, salvo que esté expresamente permitido según la Sección 3.
+
+Para cumplir con los términos de la licencia de UNITY, se aplican las siguientes restricciones:
+
+  - El PRODUCTO no podrá utilizarse con fines ilícitos ni de forma que infrinja los derechos de terceros.
+  - El PRODUCTO no podrá utilizarse para desarrollar, compilar ni distribuir otro software.
+  - No se otorgan derechos para modificar, extraer ni redistribuir el motor UNITY ni los componentes de tiempo de ejecución integrados en el PRODUCTO.
+
+2. Aviso sobre componentes de terceros
+
+El PRODUCTO incluye componentes de software de terceros licenciados a LA EMPRESA. Dichos componentes se proporcionan exclusivamente como parte del PRODUCTO y no podrán separarse, modificarse ni redistribuirse de forma independiente.
+
+El USUARIO FINAL no tiene ningún derecho sobre el software de terceros integrado en el PRODUCTO, incluidos (pero no limitados a) el motor UNITY y los componentes de tiempo de ejecución.
+
+3. Contenido del usuario / Modificaciones
+
+Se permiten modificaciones del PRODUCTO únicamente en la medida en que dichas modificaciones no alteren, realicen ingeniería inversa ni redistribuyan ninguna parte del motor UNITY ni de los componentes de ejecución incluidos en el PRODUCTO, y no infrinjan los derechos de propiedad intelectual del propio PRODUCTO.
+
+Las modificaciones permitidas sólo pueden afectar al contenido original del PRODUCTO (como recursos, archivos de datos estáticos o de lógica del juego) y no deben eludir ni sortear la progresión prevista en el PRODUCTO:
+
+  - Desbloquear o conceder acceso a contenido y/o logros de una manera distinta a la prevista por el PRODUCTO.
+  - Redistribuir datos de guardado modificados o herramientas para crearlos o modificarlos, ya que esto constituye una elusión de la progresión prevista descrita anteriormente.
+
+Se permite la redistribución (de pago o gratuita) de las modificaciones que cumplan con estos términos, siempre que dichas modificaciones no incluyan ni redistribuyan ninguna parte protegida por derechos de autor (modificada o no) del PRODUCTO ni ningún componente de terceros incluido con el PRODUCTO, y no infrinjan ninguna ley aplicable ni derecho de propiedad intelectual. Las modificaciones deben consistir únicamente en contenido que el MODIFICADOR tenga plenos derechos para redistribuir (y/o vender, si corresponde).
+
+4. Aclaración sobre la propiedad y la propiedad intelectual
+
+Todos los derechos sobre el contenido original del PRODUCTO pertenecen a LA EMPRESA. Todos los derechos sobre los componentes de terceros integrados pertenecen a sus respectivos propietarios.
+
+5. Exclusión de garantías
+
+EL PRODUCTO se proporciona «tal cual» y «según disponibilidad», con todos sus defectos y sin garantía de ningún tipo.
+
+LA EMPRESA no se responsabiliza de la disponibilidad, el rendimiento ni el funcionamiento de los servicios de terceros utilizados por EL PRODUCTO.
+
+Si el acceso del USUARIO FINAL al PRODUCTO a través de una plataforma de terceros se ve obstaculizado, es posible que se le solicite que demuestre la titularidad legal de una licencia válida del PRODUCTO antes de que LA EMPRESA pueda considerar cualquier solicitud relacionada con el acceso o el uso. LA EMPRESA no garantiza la reentrega, copias de reemplazo ni la disponibilidad continua del PRODUCTO a través de ninguna plataforma o servicio específico.
+
+El acceso a los servicios de terceros integrados con el PRODUCTO (incluidas las API de plataforma, los servicios en la nube, los sistemas de autenticación o las funciones en línea) está controlado por los propietarios de dichos servicios y puede modificarse, restringirse o revocarse en cualquier momento. LA EMPRESA no se responsabiliza de la pérdida de funcionalidad, características o usabilidad del PRODUCTO que resulte de cambios, limitaciones o la revocación del acceso a los servicios de terceros.
+
+6. Privacidad y recopilación de datos
+
+EL PRODUCTO no recopila intencionadamente datos personales, salvo los necesarios para guardar partidas, el progreso, los archivos de estadísticas o los datos técnicos esenciales necesarios para diagnosticar o solucionar fallos de funcionamiento. En ningún caso EL PRODUCTO recopila datos que puedan utilizarse para identificar a una persona específica, como nombres de usuario o ubicaciones.
+
+La recopilación de datos a nivel de plataforma por parte de servicios de terceros se rige por sus respectivas políticas de privacidad.
+
+7. Terminación
+
+Este ACUERDO permanecerá vigente hasta su terminación.
+
+LA EMPRESA podrá terminar este ACUERDO cuando así lo exija la ley o en casos de infracción de derechos de propiedad intelectual.
+
+La terminación de este ACUERDO no revoca la licencia del USUARIO FINAL que le otorga el derecho a usar EL PRODUCTO.
+
+Tras la terminación, LA EMPRESA podrá, a su discreción, denegar al USUARIO FINAL el acceso a cualquier función en línea, cuenta, servicio o compra relacionada con productos actuales o futuros de LA EMPRESA. Dicha denegación no afecta la licencia permanente del USUARIO FINAL para usar EL PRODUCTO localmente.
+
+8. Definiciones
+
+"ACUERDO" se refiere a este Acuerdo de Licencia de Usuario Final
+
+"USUARIO FINAL" se refiere a quien utilice esta copia de EL PRODUCTO.
+
+"EL PRODUCTO" se refiere al videojuego que acompaña a este acuerdo, el software y cualquier medio asociado, material impreso, documentación y elementos virtuales incluidos.
+
+"LA EMPRESA" se refiere a Mindside Games Studio.
+
+«UNITY» se refiere a Unity Software Inc., una corporación de Delaware, junto con sus subsidiarias y otras entidades controladas directa o indirectamente por UNITY o que se encuentren bajo el control común de UNITY.
+
+«MODIFICADOR» se refiere a cualquier persona o grupo que cree, modifique o distribuya cualquier elemento que pueda utilizarse como modificación del Producto, incluyendo a quienes producen recursos, herramientas o archivos utilizados en la modificación, y a quienes distribuyen dichas modificaciones, total o parcialmente.
+
+«DATOS DE GUARDADO» se refiere a cualquier dato que el PRODUCTO es capaz de generar y que represente el progreso del USUARIO FINAL, el contenido desbloqueado, los logros y las estadísticas de juego.
