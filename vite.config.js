@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import mkcert from "vite-plugin-mkcert"
+import svg from "vite-plugin-svgo"
 
 //import basicSsl from '@vitejs/plugin-basic-ssl'
 
@@ -8,7 +9,10 @@ export default defineConfig({
     https: true,
   },
   plugins: [
-    mkcert()
+    mkcert(),
+    svg({
+      plugins: ['prefixIds']
+    })
   ],
   base: "/",
   build: {

@@ -1,51 +1,121 @@
-import './style.css'
+import { h, css } from './util'
+import MakeHeader from './modules/header'
+import MakeFooter from './modules/footer'
 
-import { ElementReactive3D, WaterPanner } from './elements/home-components'
+css.Add('./res/css/style.css')
 
-import homeBackground from './res/img/bg_sky.png'
-import mindsideLogo from './res/img/home_mindside_logo.svg?raw'
-import mindsideLogoGlare from './res/img/home_mindside_logo_glare.svg?raw'
-import mindsideTypo from './res/img/mindside_typo.svg?raw'
+const
+  historyState= { site:"mindside" },
+  landing= "home",
+  mindsideAPI= {
+    desktop: !(navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches),
+    page: "",
+    NavigateRoute: (r) => _NavigateRoute(r),
+    NavigateTab: (r) => _NavigateTab(r)
+  }
 
-import soc_instagram from './res/social/instagram.svg'
-import soc_steam from './res/social/steam.svg'
-import soc_youtube from './res/social/youtube.svg'
+window.mindsideAPI= mindsideAPI
+  
+document.body.setAttribute(mindsideAPI.desktop ? "desktop" : "mobile", "")
 
-document.querySelector('#root').innerHTML= `
-<section class="section">
-  <div class="section-container home-container">
-    <div class="bg-sky noselect nopointer"/>
-      <div class="home-title">
-        <div class="logo-container">
-          <div id="home-logo" class="logo">${mindsideLogo}</div>
-          <div class="glare">${mindsideLogoGlare}</div>
-        </div>
-        <div id="home-typo" class="typo">${mindsideTypo}</div>
-      </div>
-    </div>
-    <div id="home-water" class="bg-water"/>
-      <div class="bg-water-l"></div>
-      <div class="home-socials">
-        <div><a href="https://www.instagram.com/MindsideGames" target="_blank"><img src="${soc_instagram}"/><span>@MindsideGames</span></a></div>
-        <div><a href="https://store.steampowered.com/franchise/mindside" target="_blank"><img src="${soc_steam}"/><span>@MindsideGames</span></a></div>
-        <div><a href="https://www.youtube.com/@MindsideGamesStudio" target="_blank"><img src="${soc_youtube}"/><span>@MindsideGamesStudio</span></a></div>
-      </div>
-      <div class="bg-water-r"></div>
-    </div>
-  </div>
-</section>
-<section class="section">
-  <div class="section-container noselect">
-    <div class="section-inner">
-      <h2>Games from deep inside.</h2>
-      <div class="separator"></div>
-      <p>Contact / Business inquiries: <a href="mailto:mindsidegames@gmail.com" target="_blank">mindsidegames@gmail.com</a></p>
-      <p>(C) Mindside Games Studio 2026, All right reserved, Made by Sergio 'Sopze' with Vite+VanillaJS</p>
-    </div>
-  </div>
-</section>
-`
+let
+  queryParams= new URLSearchParams(location.search),
+  firstVisit= true
 
-ElementReactive3D(document.querySelector('#home-logo'), -3.0, 2.0)
-ElementReactive3D(document.querySelector('#home-typo'), -.25, .5)
-WaterPanner(document.querySelector('#home-water'), 750)
+const pages= {
+  "404":      "404",
+  "home":     "home",
+  "games":    "games",
+  "team":     "team",
+  "contact":  "contact"
+};
+
+const importRoute= (route) => import(`./routes/${route}.js`)
+
+root.append(h("header", {id:"page-header"}, []))
+root.append(h("main", {id:"page-content"}, []))
+root.append(h("footer", {id:"page-footer"}, []))
+
+const
+  e_header= root.querySelector("header"),
+  e_content= root.querySelector("main"),
+  e_footer= root.querySelector("footer")
+
+const
+  header= MakeHeader(),
+  footer= MakeFooter()
+
+function _NavigateRoute(route)
+{
+  history.pushState(historyState, "", route)
+  _NavigatePage(route)
+}
+
+window.addEventListener("popstate", ()=>{
+  _NavigatePage(location.pathname.substring(1) ?? landing)
+})
+
+async function _NavigatePage(page){
+  if(page in pages){
+
+    e_content.setAttribute("hidden", "")
+
+    const route= await importRoute(pages[page])
+
+    e_content.innerHTML="";
+    route.Render(e_content)
+
+    mindsideAPI.page= page
+    header.OnPageChanged(route.GetTitle());
+
+    if(route.useHeader) e_header.removeAttribute("hidden")
+    else e_header.setAttribute("hidden", "")
+
+    if(route.useFooter) e_footer.removeAttribute("hidden")
+    else e_footer.setAttribute("hidden", "")
+
+    e_content.removeAttribute("hidden")
+  }
+  else _NavigatePage("404")
+}
+
+function _NavigateTab(route) {
+  window.open(location.origin + `/?p=${(route in pages ? route : "404")}`, "_blank", "noopener, noreferrer")
+}
+
+function AwakePage(){
+  e_header.append(header.section)
+  e_footer.append(footer.section)
+
+  const route= location.pathname.startsWith("/404") ? "404" : queryParams.get("p") ?? location.pathname.substring(1)
+  _NavigateRoute(route != null && route != "" ? route : landing)
+
+  document.body.removeAttribute("hidden")
+}
+
+AwakePage()
+
+// DEV ONLY
+
+let lastModified = 0;
+
+setInterval(async () => {
+
+    const links = [...document.querySelectorAll('link[rel="stylesheet"]')];
+    for(const link of links){
+      const 
+        res = await fetch(link.href, { cache: "no-cache" }),
+        text = await res.text();
+
+      if (link._lastContent !== text) {
+        document.body.setAttribute("hidden", "")
+        link._lastContent = text;
+
+        const url = new URL(link.href);
+        url.searchParams.set("_reload", Date.now());
+        link.href = url.href;
+
+        document.body.removeAttribute("hidden")
+      }
+    }
+}, 250);
