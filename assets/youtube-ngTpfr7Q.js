@@ -1,0 +1,1 @@
+var e=`/assets/instagram-Chdeoeku.svg`,t=`/assets/steam-BwekbKaA.svg`,n=`/assets/youtube-Hhlsh88S.svg`;export{t as n,e as r,n as t};
