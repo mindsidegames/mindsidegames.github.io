@@ -289,15 +289,6 @@ p { margin: 8px; }
   }
 }
 
-.games-section {
-  
-  .game-links {
-    font-size: .8rem;
-    margin-top: auto;
-    margin-bottom: 0px;
-  }
-}
-
 @media (min-width: 1200px) { 
   .team-section {
     .line-separator, .text-separator {
@@ -314,6 +305,62 @@ p { margin: 8px; }
       margin-bottom: .5rem;
     }
     h1 { margin-top: 2rem; }
+  }
+}
+
+.games-section {
+  
+  .line-separator {
+    margin-block: 3em;
+  }
+
+  .game-links {
+    list-style: none;
+    font-size: .8rem;
+    margin-top: auto;
+    margin-bottom: 0px;
+    padding: 0px;
+
+    li {
+      display: flex;
+      width: fit-content;
+      background: var(--theme-w1);
+      border-radius: 1em;
+
+      &:has(a:hover) { background: var(--theme-w2); }
+      transition: background-color .125s;
+    }
+
+    a {
+      padding: 1em 3em;
+      display: flex;
+    }
+
+    span { margin-right: 1em; }
+    img { height: 2em; }
+  }
+}
+
+@media (min-width: 1200px) { 
+  .games-section .game-links li {
+    .card:nth-child(4n + 1) & { float: right; }
+    .card:nth-child(4n + 3) & { float: left; }
+  }
+}
+@media (max-width: 1199px) { 
+  .games-section .game-links li {
+    margin-inline: auto;
+  }
+}
+@media (max-width: 599px) { 
+  .games-section .game-links li {
+    a {
+      flex-direction: column;
+    }
+    span {
+      margin-right: 0;
+      margin-bottom: .5em;
+    }
   }
 }
 
