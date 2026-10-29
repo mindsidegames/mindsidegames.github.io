@@ -1,6 +1,6 @@
 
 const context= {
-  version: "v0.3",
+  version: "v0.4",
   desktop: !(navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches),
   overlay: {any: false, ref:null},
   page: {any: false, name:"", ref:null},

@@ -10,6 +10,7 @@ function _MakeButtons(){
     _MakeNavButton("home", "Home"),
     _MakeNavButton("games", "Games"),
     _MakeNavButton("team", "Team"),
+    //_MakeNavButton("about", "About"),
     _MakeNavButton("contact", "Contact"),
   ]
 }

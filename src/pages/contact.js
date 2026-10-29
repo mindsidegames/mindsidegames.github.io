@@ -20,7 +20,7 @@ export function CreatePage() {
     return hs(`<div><a href="${l.url}" target="_blank"><img src="${src}"/><span>${l.name}</span></a></div>`)
   }
 
-  const master= MakeSection(["text-section"], true, false, [
+  const master= MakeSection(["text-section contact-section"], true, false, [
       r("Direct Contact", [
         s(context.social.email, soc_gmail),
         s(context.social.discord, soc_discord)

@@ -65,3 +65,65 @@ export function MakeSection(classes, inner, select, children)  {
       body: inner ? el_inner : el_container,
     }
 }
+
+const 
+  FNV_BASIS_16= 0x966B,
+  FNV_PRIME_16= 0x0101,
+
+  FNV_BASIS_32= 0x811C9DC5,
+  FNV_PRIME_32= 0x1000193,
+
+  FNV_BASIS_64= 0xCBF29CE484222325n,
+  FNV_PRIME_64= 0x100000001B3n
+		
+function HashFNV(a, input, basis, prime, mask){
+
+  const 
+    bytes= new TextEncoder().encode(input),
+    bigint= typeof basis === 'bigint' || typeof prime === "bigint" || typeof mask === "bigint"
+
+  let result= basis
+
+  if(bigint){
+    if(a) {
+      for(const b of bytes){
+        result^= BigInt(b)
+        result= BigInt.asUintN(64, result * prime)
+        result= (result & mask) >>> 0
+      }
+    }
+    else {
+      for(const b of bytes){
+        result= BigInt.asUintN(64, result * prime)
+        result^= BigInt(b)
+        result= (result & mask) >>> 0
+      }
+    }
+  }
+  else {
+    if(a) {
+      for(const b of bytes){
+        result^= b
+        result= Math.imul(result,prime)
+        result= (result & mask) >>> 0
+      }
+    }
+    else {
+      for(const b of bytes){
+        result= Math.imul(result,prime)
+        result^= b
+        result= (result & mask) >>> 0
+      }
+    }
+  }
+  return result;
+}
+
+export const fnvHasher= {
+  HashFNV116: (input) => HashFNV(false, input, FNV_BASIS_16, FNV_PRIME_16, 0xFFFF),
+  HashFNV1a16: (input) => HashFNV(true, input, FNV_BASIS_16, FNV_PRIME_16, 0xFFFF),
+  HashFNV132: (input) => HashFNV(false, input, FNV_BASIS_32, FNV_PRIME_32, 0xFFFFFFFF),
+  HashFNV1a32: (input) => HashFNV(true, input, FNV_BASIS_32, FNV_PRIME_32, 0xFFFFFFFF),
+  HashFNV164: (input) => HashFNV(false, input, FNV_BASIS_64, FNV_PRIME_64, 0xFFFFFFFFFFFFFFFF),
+  HashFNV1a64: (input) => HashFNV(true, input, FNV_BASIS_64, FNV_PRIME_64, 0xFFFFFFFFFFFFFFFF)
+}

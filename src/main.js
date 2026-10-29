@@ -1,5 +1,5 @@
 import _context from './globals'
-import _util, { css } from './util'
+import _util, { css, fnvHasher } from './util'
 
 window.context= _context
 
@@ -30,6 +30,7 @@ const pageRoutes= {
   "home":     "home",
   "games":    "games",
   "team":     "team",
+  //"about":    "about",
   "contact":  "contact"
 };
 
@@ -153,26 +154,30 @@ function AwakePage(){
 AwakePage()
 
 // DEV ONLY
-/*
-let lastModified = 0;
 
-setInterval(async () => {
+if(location.host.includes("localhost")){
 
-    const links = [...document.querySelectorAll('link[rel="stylesheet"]')];
-    for(const link of links){
-      const 
-        res = await fetch(link.href, { cache: "no-cache" }),
-        text = await res.text();
+  setInterval(async () => {
 
-      if (link._lastContent !== text) {
-        document.body.setAttribute("hidden", "")
-        link._lastContent = text;
+      const links = [...document.head.querySelectorAll('link[rel="stylesheet"]')];
+      
+      for(const l of links){
+        const
+          res = await fetch(l.href, { cache: "no-cache" }), 
+          srcLast= l.getAttribute("lm") ?? "0", 
+          dstLast= fnvHasher.HashFNV132(res.headers.get('last-modified'))
 
-        const url = new URL(link.href);
-        url.searchParams.set("_reload", Date.now());
-        link.href = url.href;
+        if(srcLast != dstLast){ 
 
-        document.body.removeAttribute("hidden")
+          document.body.setAttribute("hidden", "")
+
+          const url = new URL(l.href);
+          url.searchParams.set("t", Date.now());
+          l.href = url.href;
+
+          l.setAttribute("lm", dstLast)
+          document.body.removeAttribute("hidden")
+        }
       }
-    }
-}, 500);*/
+  }, 500);
+}
