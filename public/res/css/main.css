@@ -3,10 +3,7 @@
 @font-face { font-family: 'PerfectDOSVGA'; src: url('../font/PerfectDOSVGA437.woff2') format('woff2') }
 
 :root {
-  --text: #9ca3af;
-  --text-h: #a4a4a4;
   --bg: #16171d;
-  --border: #2e303a;
   --code-bg: #1f2028;
   --accent: #c084fc;
   --accent-bg: rgba(192, 132, 252, 0.15);
@@ -14,18 +11,38 @@
   --social-bg: rgba(47, 48, 58, 0.5);
   --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 
+  --text-light: #e4e4e4;
+  --text-neutral: #9ca3af;
+  --text-dark: #6d777a;
+
+  --text-dimm0: #525762;
+  --text-dimm1: #383940;
+  
+  --border-light: #3A3840;
+  --border-dark: #2e303a;
+
+  --theme-s0: #000000;
+  --theme-s1: #161616;
+  --theme-s2: #201F21;
+  --theme-s3: #232128;
+  --theme-s4: #272430;
+
+  --theme-w0: #26212D;
+  --theme-w1: #322B3F;
+  --theme-w2: #403554;
+
+  --font-mono: "Share Tech Mono";
+  --font-dos: 'PerfectDOSVGA';
+
   --font-syne: "Syne", Roboto, system-ui, 'Segoe UI', sans-serif;
   --font-sarabun: "Sarabun", Roboto, system-ui, 'Segoe UI', sans-serif;
-  --font-mono: "Share Tech Mono";
-
   --font-amatic: 'AmaticRegular';
   --font-foggy: 'FoggyBottom';
-  --font-dos: 'PerfectDOSVGA';
 
   font: 18px/145% var(--font-syne);
   letter-spacing: 0.08em;
   color-scheme: light dark;
-  color: var(--text);
+  color: var(--text-neutral);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -45,4 +62,15 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-sarabun);
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+svg {
+  pointer-events: none;
+  user-select: none;
 }

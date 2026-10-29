@@ -1,4 +1,4 @@
-export function ElementReactive3D(element, xfactor, yfactor) {
+export function SetupReactive3D(element, xfactor, yfactor) {
   const styles= element.style
   const UpdatePosition = (x,y) => {
     const 
@@ -17,23 +17,34 @@ export function ElementReactive3D(element, xfactor, yfactor) {
     styles.setProperty('--ryd', ry + "deg")
   }
 
-  document.addEventListener('mousemove', (e) => UpdatePosition(e.clientX, e.clientY))
+  function _Update(e) { UpdatePosition(e.clientX, e.clientY) }
+
+  document.addEventListener('mousemove', _Update)
   UpdatePosition(0,0)
+
+  return { 
+    Dispose: ()=> document.removeEventListener('mousemove', _Update)
+  }
 }
 
-let __waterInterval
-export function WaterPanner(element, interval) {
+export function SetupWaterPanner(element, interval, { ref }) {
   const 
     pxh= 40,
     style= element.style
   let box, factor, value= 0;
 
-  if(__waterInterval != null) clearInterval(__waterInterval)
-  __waterInterval= setInterval(()=>{ 
+  function _Clear() { if(ref != null) clearInterval(ref) }
+
+  _Clear()
+  ref= setInterval(()=>{ 
     box= element.getBoundingClientRect()
-    factor= box.height / pxh;
+    factor= box.height / pxh
     value= (value - factor) % (factor*pxh)
-    style.setProperty("--wy", value + "px"); 
+    style.setProperty("--wy", value + "px") 
   }, interval)
   style.setProperty("--wy", "0px");
+
+  return {
+    Dispose: _Clear
+  }
 }

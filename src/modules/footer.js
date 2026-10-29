@@ -1,14 +1,23 @@
-import { MakeSection } from '../util'
+import _util, { MakeSection } from '../util'
 
-function Instantiate() {
-  const module= MakeSection(["footer-section"])
-  module.content.innerHTML= `
-    <h2>games&nbspfrom deep&nbspinside</h2>
-    <div class="separator"></div>
-    <p class="text contact">Contact&nbsp/ Business&nbspinquiries: <a href="mailto:mindsidegames@gmail.com" target="_blank">mindsidegames@gmail.com</a></p>
-    <p class="text">©&nbsp2026 Mindside&nbspGames&nbspStudio, All&nbsprights&nbspreserved ·&nbspPage&nbspcreated&nbspby Sergio&nbsp'Sopze' with&nbspVite+VanillaJS <span class="note">(no&nbspcrap&nbspvibecoding)</span></p>
-  `
-  return module
+function CreateModule() {
+  const h= _util.h, hs= _util.hs
+  const master= MakeSection(["footer-section"], true, false, [
+    h("h2", {}, ["games&nbspfrom deep&nbspinside"]),
+    h("div", {class:"line-separator"}, []),
+    h("p", {class:"text contact"}, [
+      "Contact&nbsp/ Business&nbspinquiries: ",
+      h("a", {href:context.social.email.url}, [context.social.email.name])
+    ]),
+    h("p", {class:"text-dimm0", 'aria-hidden':""}, [
+      "©&nbsp2026 Mindside&nbspGames&nbspStudio, All&nbsprights&nbspreserved ·&nbspPage&nbspcreated&nbspby Sergio&nbsp'Sopze' with&nbspVite+VanillaJS ",
+      h("span", {class:"text-dimm1"}, ["(no&nbspcrap&nbspvibecoding)"])
+    ]),
+    h("span", {class:"page-version", 'aria-hidden':""}, [context.version])
+  ])
+  return {
+    element: master.element
+  }
 }
 
-export default Instantiate
+export default CreateModule

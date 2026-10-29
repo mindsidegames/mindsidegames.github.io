@@ -1,28 +1,31 @@
-import { h, css } from './util'
+import _context from './globals'
+import _util, { css } from './util'
+
+window.context= _context
+
 import MakeHeader from './modules/header'
 import MakeFooter from './modules/footer'
 
-css.Add('./res/css/style.css')
+await css.Add('./res/css/style.css')
+await new Promise(requestAnimationFrame)
+
+const h= _util.h, ce= _util.ce
 
 const
-  historyState= { site:"mindside" },
-  landing= "home",
-  mindsideAPI= {
-    desktop: !(navigator.maxTouchPoints > 0 && matchMedia("(pointer: coarse)").matches),
-    page: "",
-    NavigateRoute: (r) => _NavigateRoute(r),
-    NavigateTab: (r) => _NavigateTab(r)
-  }
+  historyState= { site:"mindsidegames" },
+  landing= "home"
 
-window.mindsideAPI= mindsideAPI
+_context.NavigateRoute= _NavigateRoute
+_context.NavigateTab= _NavigateTab
+_context.ReplaceOverlayContent= _ReplaceOverlayContent
   
-document.body.setAttribute(mindsideAPI.desktop ? "desktop" : "mobile", "")
+document.body.setAttribute(context.desktop ? "desktop" : "mobile", "")
 
 let
   queryParams= new URLSearchParams(location.search),
   firstVisit= true
 
-const pages= {
+const pageRoutes= {
   "404":      "404",
   "home":     "home",
   "games":    "games",
@@ -30,16 +33,16 @@ const pages= {
   "contact":  "contact"
 };
 
-const importRoute= (route) => import(`./routes/${route}.js`)
-
-root.append(h("header", {id:"page-header"}, []))
-root.append(h("main", {id:"page-content"}, []))
-root.append(h("footer", {id:"page-footer"}, []))
+const importRoute= (route) => import(`./pages/${route}.js`)
 
 const
-  e_header= root.querySelector("header"),
-  e_content= root.querySelector("main"),
-  e_footer= root.querySelector("footer")
+  e_overlay= h("div", {id:"overlay"}, []),
+  e_header= h("header", {id:"page-header", hidden:""}, []),
+  e_content= h("main", {id:"page-content"}, []),
+  e_footer= h("footer", {id:"page-footer", hidden:""}, [])
+
+context.overlay= e_overlay
+root.replaceChildren(e_overlay, e_header, e_content, e_footer)
 
 const
   header= MakeHeader(),
@@ -55,40 +58,94 @@ window.addEventListener("popstate", ()=>{
   _NavigatePage(location.pathname.substring(1) ?? landing)
 })
 
-async function _NavigatePage(page){
-  if(page in pages){
+const _basePage = {
+  self: null,
+  title: null,
+  useHeader: true,
+  useFooter: true,
+  CreatePage: ()=> null,
+  Awake: async ()=>{},
+  Start: async ()=>{},
+  Dispose: ()=>{}
+}
 
-    e_content.setAttribute("hidden", "")
+async function _NavigatePage(name){
+  if(name in pageRoutes){
+    const sh= _util.setHidden
 
-    const route= await importRoute(pages[page])
+    const 
+      module= await importRoute(pageRoutes[name]),
+      dstPage= {__proto__:_basePage, ...(module.CreatePage())}
 
-    e_content.innerHTML="";
-    route.Render(e_content)
+    dstPage.self= dstPage
 
-    mindsideAPI.page= page
-    header.OnPageChanged(route.GetTitle());
+    sh(e_content, true)
+    sh(e_footer, true)
 
-    if(route.useHeader) e_header.removeAttribute("hidden")
-    else e_header.setAttribute("hidden", "")
+    const srcPageInfo= context.page
+    if(srcPageInfo.any) srcPageInfo.ref.Dispose()
+      
+    await dstPage.Awake()
 
-    if(route.useFooter) e_footer.removeAttribute("hidden")
-    else e_footer.setAttribute("hidden", "")
+    _ReplaceOverlayContent(null)
+    e_content.replaceChildren(dstPage.element)
 
-    e_content.removeAttribute("hidden")
+    context.page= { any:true, name:name, ref:dstPage }
+
+    await dstPage.Start()
+    header.OnPageChanged(dstPage.title)
+
+    sh(e_header, !dstPage.useHeader)
+    sh(e_content, false)
+    sh(e_footer, !dstPage.useFooter)
   }
   else _NavigatePage("404")
 }
 
 function _NavigateTab(route) {
-  window.open(location.origin + `/?p=${(route in pages ? route : "404")}`, "_blank", "noopener, noreferrer")
+  window.open(location.origin + `/?p=${(route in pageRoutes ? route : "404")}`, "_blank", "noopener, noreferrer")
 }
 
+function _ReplaceOverlayContent(el){
+  const sh= _util.setHidden
+
+  const srcOverlayInfo= context.overlay
+  const any= el?.element != null
+
+  if(overlay.any) srcOverlayInfo.ref.Dispose()
+
+  context.overlay= { any, ref:el }
+  if(any) {
+    e_overlay.replaceChildren(el.element)
+    e_overlay.focus()
+  }
+  else e_overlay.replaceChildren()
+  sh(e_overlay, !any)
+}
+
+function ev_GlobalClick(e){
+  if(context.overlay.any && e.target == e_overlay) { 
+    if(e.button == 0) { _ReplaceOverlayContent(null); ce(e) }
+  }
+} 
+
+function ev_GlobalKeyDown(e){
+  if(context.overlay.any) { 
+    if(e.keyCode == 27) { _ReplaceOverlayContent(null); ce(e) } // esc
+    else context.overlay.ref.OnKeyDown(e.keyCode)
+  }
+} 
+
 function AwakePage(){
-  e_header.append(header.section)
-  e_footer.append(footer.section)
+
+  e_header.append(header.element)
+  e_footer.append(footer.element)
 
   const route= location.pathname.startsWith("/404") ? "404" : queryParams.get("p") ?? location.pathname.substring(1)
   _NavigateRoute(route != null && route != "" ? route : landing)
+
+  document.addEventListener('click', ev_GlobalClick, true)
+  document.addEventListener('keydown', ev_GlobalKeyDown, true)
 
   document.body.removeAttribute("hidden")
 }
@@ -96,7 +153,7 @@ function AwakePage(){
 AwakePage()
 
 // DEV ONLY
-
+/*
 let lastModified = 0;
 
 setInterval(async () => {
@@ -118,4 +175,4 @@ setInterval(async () => {
         document.body.removeAttribute("hidden")
       }
     }
-}, 250);
+}, 500);*/
