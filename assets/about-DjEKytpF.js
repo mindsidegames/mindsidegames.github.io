@@ -1,0 +1,1 @@
+import{i as e,t}from"./util-XZSnBIcd.js";function n(){let n=e.h;return e.hs,{title:`ABOUT US`,element:t([`text-section about-section`],!0,!1,[n(`h1`,{},[`Hello world`])]).element}}export{n as CreatePage};

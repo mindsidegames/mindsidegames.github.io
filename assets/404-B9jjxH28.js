@@ -1,0 +1,1 @@
+import{i as e,t}from"./util-XZSnBIcd.js";function n(){let n=e.h;e.hs;let r=e.sepline;return{useHeader:!1,useFooter:!1,element:t([`e404-section`],!0,!1,[n(`h1`,{},[`404`]),n(`h2`,{},[`Page Not Found`]),n(`p`,{},[`Sorry, the&nbsppage&nbspyou're&nbsplooking&nbspfor just&nbspdoesn't&nbspexist.`]),r(),n(`a`,{href:`/?p=home`},[`Return home`])]).element}}export{n as CreatePage};
