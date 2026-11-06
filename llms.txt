@@ -1,0 +1,25 @@
+# Mindside Games Studio
+
+The official website of Mindside Games Studio, we make the best games out there, real original ideas with very polished mechanics and visuals, crafted with tons of love and patience, without letting trends, corps or money to shape the final product. We stay true to ourselves, not to the industry, only that way we will effectivelly make a better industry
+
+## Main Topics
+
+- Showcase current and future releases
+- Contact
+
+## Software
+
+- Risewards
+- Hidden Woods
+- RefleXes
+
+## About
+
+This website is maintained by the owner and solo developer of the games shown in the site.
+It provides a nice place to learn about the games, read news, and obtain support.
+
+## Important Pages
+
+- [Games](https://www.mindsidegames.com/games)
+- [About Us](https://www.mindsidegames.com/about)
+- [Contact](https://www.mindsidegames.com/contact)
