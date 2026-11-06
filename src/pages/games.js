@@ -1,5 +1,7 @@
 import _util, { MakeSection } from '../util'
 
+import img_classified from '../res/games/classified.webp'
+
 import pic_risewards from '../res/games/eb71ec1f-0.webp'
 import pic_hiddenwoods from '../res/games/6a34711d-0.webp'
 import pic_reflexes from '../res/games/7b6740df-0.webp'
@@ -9,7 +11,7 @@ import store_itchio from '../res/games/store_itchio.svg?url'
 import store_googleplay from '../res/games/store_googleplay.svg?url'
 
 export function CreatePage() {
-  const h= _util.h, hs= _util.hs, sl= _util.sepline
+  const h= _util.h, hs= _util.hs, sl= _util.sepline, st= _util.septext
 
   function l({url, label, src, site}) {
     return hs(`<li><a href="${url}" target="_blank" aria-label="game related link to ${site}"><span>${label}</span><img src="${src}" alt="${site}"/></a></li>`)
@@ -30,10 +32,13 @@ export function CreatePage() {
 
   const master= MakeSection(["text-section", "games-section"], true, false, [
     h("div", {class:"cards-container"}, [
+      st("Upcoming Titles"),
       c("Risewards", pic_risewards, "Solve puzzles and manage to climb out of the rooms in this game where there are no rules and each run is unique.", [
         { url:"https://store.steampowered.com/app/5005160", label:"demo available on", src:store_steam, site:"steam" }
       ]),
-      sl(),
+      //sl(),
+      //c("Victoria", img_classified, "Find a way to exit from the horrific town you're trapped in.", []),
+      st("Other Games"),
       c("Hidden Woods", pic_hiddenwoods, "5 min experimental game about how thoughts and decisions change reality.", [
         { url:"https://sopze.itch.io/hidden-woods", label:"play it on", src:store_itchio, site:"itch.io" }
       ]),

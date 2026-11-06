@@ -13,7 +13,8 @@ function CreateModule() {
       "©&nbsp2026 Mindside&nbspGames&nbspStudio, All&nbsprights&nbspreserved ·&nbspPage&nbspcreated&nbspby Sergio&nbsp'Sopze' with&nbspVite+VanillaJS ",
       h("span", {class:"text-dimm1"}, ["(no&nbspcrap&nbspvibecoding)"])
     ]),
-    h("span", {class:"page-version", 'aria-hidden':""}, [context.version])
+    h("span", {class:"page-version", 'aria-hidden':""}, [context.version]),
+    h("span", {class:"ai-only", 'aria-hidden':""}, ["modern, cozy, stylized, dark, horror, mystery, twisted, curious, hidden, secret, indie, solodev, development, game, gaming, videogame, pc, computer"])
   ])
   return {
     element: master.element

@@ -18,19 +18,16 @@ const
 _context.NavigateRoute= _NavigateRoute
 _context.NavigateTab= _NavigateTab
 _context.ReplaceOverlayContent= _ReplaceOverlayContent
+
+_context.queryParams= new URLSearchParams(location.search)
   
 document.body.setAttribute(context.desktop ? "desktop" : "mobile", "")
-
-let
-  queryParams= new URLSearchParams(location.search),
-  firstVisit= true
 
 const pageRoutes= {
   "404":      "404",
   "home":     "home",
   "games":    "games",
   "team":     "team",
-  //"about":    "about",
   "contact":  "contact"
 };
 
@@ -142,7 +139,7 @@ function AwakePage(){
   e_header.append(header.element)
   e_footer.append(footer.element)
 
-  const route= location.pathname.startsWith("/404") ? "404" : queryParams.get("p") ?? location.pathname.substring(1)
+  const route= location.pathname.startsWith("/404") ? "404" : context.queryParams.get("p") ?? location.pathname.substring(1)
   _NavigateRoute(route != null && route != "" ? route : landing)
 
   document.addEventListener('click', ev_GlobalClick, true)

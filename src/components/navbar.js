@@ -10,7 +10,6 @@ function _MakeButtons(){
     _MakeNavButton("home", "Home"),
     _MakeNavButton("games", "Games"),
     _MakeNavButton("team", "Team"),
-    //_MakeNavButton("about", "About"),
     _MakeNavButton("contact", "Contact"),
   ]
 }
@@ -21,7 +20,7 @@ function CreateComponent() {
   const buttons= _MakeButtons()
   const nav= h("nav", {}, buttons)
   const menu= h("button", {class:"menu-icon"}, [hs(iconMenu)])
-  
+
   const master= context.desktop ?
      h("div", {class:"navbar navbar-normal"}, [menu, nav]) :
      h("div", {class:"navbar navbar-normal"}, [menu])

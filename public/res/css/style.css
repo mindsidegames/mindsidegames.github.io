@@ -310,7 +310,7 @@ p { margin: 8px; }
 
 .games-section {
   
-  .line-separator {
+  .line-separator, .text-separator {
     margin-block: 3em;
   }
 
@@ -343,8 +343,8 @@ p { margin: 8px; }
 
 @media (min-width: 1200px) { 
   .games-section .game-links li {
-    .card:nth-child(4n + 1) & { float: right; }
-    .card:nth-child(4n + 3) & { float: left; }
+    .card:nth-of-type(2n) & { float: right; }
+    .card:nth-of-type(2n+1) & { float: left; }
   }
 }
 @media (max-width: 1199px) { 
@@ -443,14 +443,14 @@ p { margin: 8px; }
 
 @media (min-width: 1200px) { 
   .card {
-    &:nth-child(4n + 1){
+    &:nth-of-type(2n){
       flex-direction: row;
       text-align: left;
       .card-picture { margin-left: auto; }
       .card-content { margin-left: 4rem; margin-right: auto; width: 50%; }
     }
 
-    &:nth-child(4n - 1){
+    &:nth-of-type(2n+1){
       flex-direction: row-reverse;
       text-align: right;
       .card-picture { margin-right: auto; }
@@ -623,4 +623,11 @@ p { margin: 8px; }
 
 *[hidden] {
   display: none !important;
+}
+
+.ai-only {
+  position: absolute;
+  width: 100vw;
+  pointer-events: none;
+  margin-left: calc(25dvw * 4);
 }
